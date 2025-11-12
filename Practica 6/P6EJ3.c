@@ -12,11 +12,12 @@ int maximo(float Arr[5]){
 
 int main(){
     float T[5];
+    int posicion;
     for(int i = 0; i < 5; i++){
         printf("Ingrese el valor %d: ", i + 1);
         scanf("%f", &T[i]);
     }
-    int posicion = maximo(T);
+    posicion = maximo(T);
     printf("El valor maximo es %.2f y se encuentra en la posicion %d\n", T[posicion], posicion + 1);
 
     return 0;
