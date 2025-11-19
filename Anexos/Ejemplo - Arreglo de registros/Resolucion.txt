@@ -1,0 +1,48 @@
+ENUNCIADO: Ejercicio propuesto: Se dispone del número de DNI y legajo de 30 alumnos. Se desea crear un programa que permita ingresar la información por teclado y, una vez cargada, pedirle al usuario que ingrese un número de DNI. Debe mostrarse en pantalla el legajo asociado a ese DNI. Este proceso debe repetirse hasta que se ingrese cero. Use estructuras de datos de tipo registro para resolver el problema.
+
+TIPO REGISTRO REG_ALUMNO
+	REAL: DNI
+	CARACTER: LEGAJO[9]
+FIN REGISTRO
+
+FUNCION BUSCAR(REG_ALUMNO: ALUMNOS[30], REAL: DNI_INGRESADO): ENTERO
+//VAR
+ENTERO: I, RES
+//INICIO
+	I<- 1
+	MIENTRAS( ALUMNOS[I].DNI <> DNI_INGRESADO AND I<30)
+		I<- I+1
+	FIN MIENTRAS
+	SI( ALUMNOS[I].DNI == DNI_INGRESADO)
+		RES <- I
+	SINO
+		RES < -1
+	FIN SI
+	DEVOLVER(RES)
+FIN FUNCION
+
+Algoritmo Lista_alumnos
+//var
+ENTERO: I
+REAL: DNI_INGRESADO
+REG_ALUMNO: ALUMNOS[30]
+//inicio
+PARA I<- 1,30
+	ESCRIBIR("INGRESE DNI DEL ALUMNO ",I)
+	LEER(ALUMNOS[I].DNI)
+	ESCRIBIR("INGRESE LEGAJO DEL ALUMNO ",I)
+	LEER(ALUMNOS[I].LEGAJO)
+FIN PARA
+ESCRIBIR("INGRESE UNA OPCION")
+LEER(DNI_INGRESADO)
+MIENTRAS(DNI_INGRESADO<>0)
+	POS <- BUSCAR(ALUMNOS,DNI_INGRESADO)
+	SI(POS>0)
+		ESCRIBIR("EL LEGAJO DEL ALUMNO CON DNI", DNI_INGRESADO,"ES:", ALUMNOS[POS].LEGAJO)
+	SINO
+		ESCRIBIR("NO SE ENCONTRO EL ALUMNO")
+	FIN SI
+	ESCRIBIR("INGRESE UNA OPCION")
+	LEER(DNI_INGRESADO)
+FIN MIENTRAS
+FIN ALGORITMO
