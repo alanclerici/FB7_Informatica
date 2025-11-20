@@ -2,7 +2,7 @@
 
 int main() {
     FILE *archivo;
-    char texto[10] = "Ejemplo"; // Genero una cadena de texto de ejemplo
+    char texto[10] = "Ejemplo"; // Genero una cadena de caracteres de ejemplo
     int i;
 
     archivo = fopen("archivo_escrito.txt", "w");
